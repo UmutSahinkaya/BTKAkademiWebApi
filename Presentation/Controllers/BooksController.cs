@@ -54,7 +54,7 @@ namespace Presentation.Controllers
         public IActionResult UpdateOneBook([FromRoute(Name = "id")] int id, [FromBody] BookDtoForUpdate bookDto)
         {
 
-            if (book is null)
+            if (bookDto is null)
                 return BadRequest(); //400
             _manager.BookService.UpdateOneBook(id, bookDto, true);
             return NoContent(); //204
