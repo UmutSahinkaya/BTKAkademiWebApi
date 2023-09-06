@@ -2,14 +2,13 @@ using BTKAkademi.WebApi.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NLog;
+using Presentation.ActionFilters;
 using Repositories.EFCore;
 using Services.Contracts;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
-LogManager.LoadConfiguration(String.Concat(Directory.GetCurrentDirectory(),"/nlog.config"));
+LogManager.LoadConfiguration(String.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
 
 builder.Services.AddControllers(config =>
 {
@@ -20,6 +19,8 @@ builder.Services.AddControllers(config =>
     .AddXmlDataContractSerializerFormatters()//xml formatýndada çýkýþ verebilecek
     .AddApplicationPart(typeof(Presentation.AssemblyRefence).Assembly)
     .AddNewtonsoftJson();
+
+builder.Services.AddScoped<ValidationFilterAttribute>(); //IoC
 
 builder.Services.Configure<ApiBehaviorOptions>(options =>
 {

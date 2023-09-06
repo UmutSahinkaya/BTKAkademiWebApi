@@ -18,7 +18,7 @@ namespace Repositories.EFCore
             _context = context;
         }
 
-        public void Add(T entity) => _context.Set<T>().Add(entity);
+        public void Create(T entity) => _context.Set<T>().Add(entity);
 
         public void Delete(T entity)=>_context.Set<T>().Remove(entity);
         public IQueryable<T> FindAll(bool trackChanges) => !trackChanges ? _context.Set<T>().AsNoTracking() : _context.Set<T>();
