@@ -9,7 +9,7 @@ namespace BTKAkademi.WebApi.Utilities.AutoMapper
         public MappingProfile()
         {
             CreateMap<BookDtoForUpdate,Book>().ReverseMap();
-            CreateMap<BookDto,Book>().ReverseMap();
+            CreateMap<Book,BookDto>().ReverseMap();
             CreateMap<BookDtoForInsertion, Book>().ReverseMap();
         }
     }

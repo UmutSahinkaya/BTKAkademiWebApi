@@ -11,7 +11,7 @@ namespace BTKAkademi.WebApi.Extensions
     {
         public static void ConfigureSqlContext(this IServiceCollection services,
             IConfiguration configuration) => services.AddDbContext<AppDbContext>(options =>
-                    options.UseSqlServer(configuration["ConnectionString:MyConnection"]));
+                    options.UseSqlServer(configuration.GetConnectionString("sqlConnection")));
 
         public static void ConfigureRepositoryManager(this IServiceCollection services) =>
             services.AddScoped<IRepositoryManager, RepositoryManager>();
@@ -27,6 +27,19 @@ namespace BTKAkademi.WebApi.Extensions
             services.AddScoped<ValidationFilterAttribute>();
             services.AddSingleton<LogFilterAttribute>();
         }
-        
+
+        public static void ConfigureCors(this IServiceCollection services)
+        {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy", builder =>
+                    builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .WithExposedHeaders("X-Pagination")
+                );
+            });
+        }
+
     }
 }

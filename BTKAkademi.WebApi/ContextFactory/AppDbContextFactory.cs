@@ -8,15 +8,16 @@ namespace BTKAkademi.WebApi.ContextFactory
     {
         public AppDbContext CreateDbContext(string[] args)
         {
-            //configurationBuilder
-            var configuration=new ConfigurationBuilder()
+            // configurationBuilder
+            var configuration = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json").Build();
+                .AddJsonFile("appsettings.json")
+                .Build();
 
-            //DbContextOptionsBuilder
+            // DbContextOptionsBuilder
             var builder = new DbContextOptionsBuilder<AppDbContext>()
-                .UseSqlServer(configuration["ConnectionString:MyConnection"],
-                prj=>prj.MigrationsAssembly("BTKAkademi.WebApi"));
+                .UseSqlServer(configuration.GetConnectionString("sqlConnection"),
+                prj => prj.MigrationsAssembly("BTKAkademi.WebApi"));
 
             return new AppDbContext(builder.Options);
         }
