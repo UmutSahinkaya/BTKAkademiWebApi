@@ -11,8 +11,8 @@ using System.Text.Json;
 namespace Presentation.Controllers
 {
     [ServiceFilter(typeof(LogFilterAttribute))]
-    [Route("api/books")]
     [ApiController]
+    [Route("api/books")]
     public class BooksController : ControllerBase
     {
         private readonly IServiceManager _manager;
@@ -22,14 +22,15 @@ namespace Presentation.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllBooksAsync([FromQuery]BookParameters bookParameters)
+        public async Task<IActionResult> GetAllBooksAsync([FromQuery] BookParameters bookParameters)
         {
             var pagedResult = await _manager
                 .BookService
-                .GetAllBooksAsync(bookParameters,false);
+                .GetAllBooksAsync(bookParameters, false);
 
             Response.Headers.Add("X-Pagination",
                 JsonSerializer.Serialize(pagedResult.metaData));
+
             return Ok(pagedResult.books);
         }
 
@@ -42,15 +43,15 @@ namespace Presentation.Controllers
 
             return Ok(book);
         }
-        
+
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         [HttpPost]
         public async Task<IActionResult> CreateOneBookAsync([FromBody] BookDtoForInsertion bookDto)
         {
             var book = await _manager.BookService.CreateOneBookAsync(bookDto);
-
             return StatusCode(201, book); // CreatedAtRoute()
         }
+
 
         [ServiceFilter(typeof(ValidationFilterAttribute))]
         [HttpPut("{id:int}")]

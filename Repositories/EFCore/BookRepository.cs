@@ -14,25 +14,27 @@ namespace Repositories.EFCore
     {
         public BookRepository(AppDbContext context) : base(context)
         {
-            
+
         }
 
         public void CreateOneBook(Book book) => Create(book);
-
         public void DeleteOneBook(Book book) => Delete(book);
-
-        public async Task<PagedList<Book>> GetAllBooksAsync(BookParameters bookParameters,bool trackChanges)
+        public async Task<PagedList<Book>> GetAllBooksAsync(BookParameters bookParameters,
+            bool trackChanges)
         {
             var books = await FindAll(trackChanges)
-            .OrderBy(b => b.Id)
-            .ToListAsync();
+           .OrderBy(b => b.Id)
+           .ToListAsync();
 
-            return PagedList<Book>.ToPagedList(books,
+            return PagedList<Book>
+                .ToPagedList(books,
                 bookParameters.PageNumber,
-                bookParameters.Pagesize);
-        } 
-        public async Task<Book> GetOneBookByIdAsync(int id, bool trackChanges) => await FindByCondition(b => b.Id.Equals(id), trackChanges).SingleOrDefaultAsync();
+                bookParameters.PageSize);
+        }
 
-        public void UpdateOneBook(Book book) =>  Update(book);
+        public async Task<Book> GetOneBookByIdAsync(int id, bool trackChanges) =>
+            await FindByCondition(b => b.Id.Equals(id), trackChanges)
+            .SingleOrDefaultAsync();
+        public void UpdateOneBook(Book book) => Update(book);
     }
 }
