@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BTKAkademi.WebApi", "BTKAkademi.WebApi\BTKAkademi.WebApi.csproj", "{64FDCA87-34D2-421B-B3B9-52F6C5C60FB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BTKAkademi.WebApi", "BTKAkademi.WebApi\BTKAkademi.WebApi.csproj", "{64FDCA87-34D2-421B-B3B9-52F6C5C60FB7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{F725599C-EEF6-4008-A86D-470FB96BC9C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repositories", "Repositories\Repositories.csproj", "{26605274-6E1B-41A8-8557-59F87C76AD24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repositories", "Repositories\Repositories.csproj", "{26605274-6E1B-41A8-8557-59F87C76AD24}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Services.csproj", "{B25A0A15-EBBC-4F31-B873-A66815BD2340}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{B25A0A15-EBBC-4F31-B873-A66815BD2340}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Presentation", "Presentation\Presentation.csproj", "{B8CD8A28-0126-4363-9CCF-D4D728AF5DDD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation", "Presentation\Presentation.csproj", "{B8CD8A28-0126-4363-9CCF-D4D728AF5DDD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entities.csproj", "{55B91EDB-C495-477F-856D-5F3BF4D23293}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,6 @@ Global
 		{64FDCA87-34D2-421B-B3B9-52F6C5C60FB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64FDCA87-34D2-421B-B3B9-52F6C5C60FB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64FDCA87-34D2-421B-B3B9-52F6C5C60FB7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F725599C-EEF6-4008-A86D-470FB96BC9C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F725599C-EEF6-4008-A86D-470FB96BC9C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F725599C-EEF6-4008-A86D-470FB96BC9C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F725599C-EEF6-4008-A86D-470FB96BC9C5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{26605274-6E1B-41A8-8557-59F87C76AD24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{26605274-6E1B-41A8-8557-59F87C76AD24}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{26605274-6E1B-41A8-8557-59F87C76AD24}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +35,10 @@ Global
 		{B8CD8A28-0126-4363-9CCF-D4D728AF5DDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B8CD8A28-0126-4363-9CCF-D4D728AF5DDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B8CD8A28-0126-4363-9CCF-D4D728AF5DDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55B91EDB-C495-477F-856D-5F3BF4D23293}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55B91EDB-C495-477F-856D-5F3BF4D23293}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55B91EDB-C495-477F-856D-5F3BF4D23293}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55B91EDB-C495-477F-856D-5F3BF4D23293}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,4 @@
-﻿using Entities.DataTransferObject;
+﻿using Entities.DataTransferObjects;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

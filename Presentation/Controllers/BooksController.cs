@@ -1,4 +1,4 @@
-﻿using Entities.DataTransferObject;
+﻿using Entities.DataTransferObjects;
 using Entities.Exceptions;
 using Entities.Models;
 using Entities.RequestFeatures;

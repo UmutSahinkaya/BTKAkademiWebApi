@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Entities.DataTransferObject;
+using Entities.DataTransferObjects;
 using Entities.Exceptions;
 using Entities.Models;
 using Entities.RequestFeatures;
@@ -42,7 +42,7 @@ namespace Services
             await _manager.SaveAsync();
         }
 
-        public async Task<(IEnumerable<ExpandoObject> books, MetaData metaData)>
+        public async Task<(IEnumerable<ShapedEntity> books, MetaData metaData)>
             GetAllBooksAsync(BookParameters bookParameters,
             bool trackChanges)
         {

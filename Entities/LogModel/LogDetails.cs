@@ -14,12 +14,14 @@ namespace Entities.LogModel
         public Object? Action { get; set; }
         public Object? Id { get; set; }
         public Object? CreateAt { get; set; }
-        public LogDetails() 
+
+        public LogDetails()
         {
             CreateAt = DateTime.UtcNow;
         }
 
-        public override string ToString()=> JsonSerializer.Serialize(this);
-
+        public override string ToString() => 
+            JsonSerializer.Serialize(this);
+       
     }
 }
