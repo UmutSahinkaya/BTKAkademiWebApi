@@ -278,3 +278,15 @@
 2023-09-07 15:32:23.4124 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.3.1999. Product version: 5.2.3+a5ddef92a8afb22508450803e37c001f4a3ba52a. GlobalAssemblyCache: False
 2023-09-07 15:32:23.4186 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\Umut.Sahinkaya\Desktop\Test\BTKAkademi\BTKAkademi.WebApi\nlog.config
 2023-09-07 15:32:23.4186 Info Configuration initialized.
+2023-09-08 08:58:39.0129 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-09-08 08:58:39.0677 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.3.1999. Product version: 5.2.3+a5ddef92a8afb22508450803e37c001f4a3ba52a. GlobalAssemblyCache: False
+2023-09-08 08:58:39.0677 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\Umut.Sahinkaya\Desktop\Test\BTKAkademi\BTKAkademi.WebApi\nlog.config
+2023-09-08 08:58:39.0816 Info Configuration initialized.
+2023-09-08 08:59:46.3194 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-09-08 08:59:46.3346 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.3.1999. Product version: 5.2.3+a5ddef92a8afb22508450803e37c001f4a3ba52a. GlobalAssemblyCache: False
+2023-09-08 08:59:46.3346 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\Umut.Sahinkaya\Desktop\Test\BTKAkademi\BTKAkademi.WebApi\nlog.config
+2023-09-08 08:59:46.3490 Info Configuration initialized.
+2023-09-08 08:59:54.3418 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-09-08 08:59:54.3577 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.3.1999. Product version: 5.2.3+a5ddef92a8afb22508450803e37c001f4a3ba52a. GlobalAssemblyCache: False
+2023-09-08 08:59:54.3655 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\Umut.Sahinkaya\Desktop\Test\BTKAkademi\BTKAkademi.WebApi\nlog.config
+2023-09-08 08:59:54.3655 Info Configuration initialized.
