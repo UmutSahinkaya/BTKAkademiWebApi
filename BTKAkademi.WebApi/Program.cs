@@ -16,7 +16,7 @@ builder.Services.AddControllers(config =>
     config.RespectBrowserAcceptHeader = true;
     config.ReturnHttpNotAcceptable = true;
 })
-    .AddXmlDataContractSerializerFormatters()//xml formatýndada çýkýþ verebilecek
+    .AddXmlDataContractSerializerFormatters()//xml formatÃ½ndada Ã§Ã½kÃ½Ã¾ verebilecek
     .AddCustomCsvFormatter()
     .AddApplicationPart(typeof(Presentation.AssemblyRefence).Assembly);
     //.AddNewtonsoftJson();
@@ -41,6 +41,7 @@ builder.Services.ConfigureCors();
 builder.Services.ConfigureDataShaper();
 builder.Services.AddCustomMediaTypes();
 builder.Services.AddScoped<IBookLinks, BookLinks>();
+
 
 var app = builder.Build();
 

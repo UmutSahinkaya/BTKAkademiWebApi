@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using Entities.DataTransferObjects;
 using Repositories.Contracts;
 using Services.Contracts;

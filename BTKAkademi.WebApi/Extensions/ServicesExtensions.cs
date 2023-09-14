@@ -1,6 +1,8 @@
+
 ﻿using Entities.DataTransferObjects;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.AspNetCore.Mvc;
+
 using Microsoft.EntityFrameworkCore;
 using Presentation.ActionFilters;
 using Repositories.Contracts;
@@ -48,6 +50,7 @@ namespace BTKAkademi.WebApi.Extensions
         {
             services.AddScoped<IDataShaper<BookDto>, DataShaper<BookDto>>();
         }
+
         public static void AddCustomMediaTypes(this IServiceCollection services)
         {
             services.Configure<MvcOptions>(config =>
@@ -73,5 +76,6 @@ namespace BTKAkademi.WebApi.Extensions
                 }
             });
         }
+
     }
 }
