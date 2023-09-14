@@ -1,9 +1,9 @@
 ﻿namespace Entities.Exceptions
 {
-    public sealed class BookNotFoundException : NotFoundException // sealed : Kalıtıma kapalı
+    public sealed class BookNotFoundException : NotFoundException
     {
         public BookNotFoundException(int id) 
-            : base($"The Book with id : {id} could not found.")
+            : base($"The book with id : {id} could not found.")
         {
         }
     }

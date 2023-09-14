@@ -6,10 +6,14 @@ using System.Threading.Tasks;
 
 namespace Entities.Models
 {
-    public class Book
+    public class ShapedEntity
     {
         public int Id { get; set; }
-        public String Title { get; set; }
-        public decimal Price { get; set; }
+        public Entity Entity { get; set; }
+
+        public ShapedEntity()
+        {
+            Entity = new Entity();
+        }
     }
 }

@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using NLog;
 using Presentation.ActionFilters;
 using Repositories.EFCore;
+using Services;
 using Services.Contracts;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,10 +16,10 @@ builder.Services.AddControllers(config =>
     config.RespectBrowserAcceptHeader = true;
     config.ReturnHttpNotAcceptable = true;
 })
+    .AddXmlDataContractSerializerFormatters()//xml formatÃ½ndada Ã§Ã½kÃ½Ã¾ verebilecek
     .AddCustomCsvFormatter()
-    .AddXmlDataContractSerializerFormatters()//xml formatýndada çýkýþ verebilecek
-    .AddApplicationPart(typeof(Presentation.AssemblyRefence).Assembly)
-    .AddNewtonsoftJson();
+    .AddApplicationPart(typeof(Presentation.AssemblyRefence).Assembly);
+    //.AddNewtonsoftJson();
 
 
 builder.Services.Configure<ApiBehaviorOptions>(options =>
@@ -38,6 +39,8 @@ builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.ConfigureActionFilters();
 builder.Services.ConfigureCors();
 builder.Services.ConfigureDataShaper();
+builder.Services.AddCustomMediaTypes();
+builder.Services.AddScoped<IBookLinks, BookLinks>();
 
 
 var app = builder.Build();

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Entities.DataTransferObject;
+using Entities.DataTransferObjects;
 using Entities.Models;
 
 namespace BTKAkademi.WebApi.Utilities.AutoMapper
