@@ -10,7 +10,8 @@ namespace Presentation.Controllers
 {
     [ApiVersion("2.0")]
     [ApiController]
-    [Route("api/{v:apiversion}/books")]
+    //[Route("api/{v:apiversion}/books")]
+    [Route("api/books")]
     public class BooksV2Controller:ControllerBase
     {
         private readonly IServiceManager _manager;

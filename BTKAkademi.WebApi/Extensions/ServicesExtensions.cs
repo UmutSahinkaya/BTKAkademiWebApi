@@ -9,6 +9,7 @@ using Repositories.Contracts;
 using Repositories.EFCore;
 using Services;
 using Services.Contracts;
+using Microsoft.AspNetCore.Mvc.Versioning;
 
 namespace BTKAkademi.WebApi.Extensions
 {
@@ -89,6 +90,7 @@ namespace BTKAkademi.WebApi.Extensions
                 opt.ReportApiVersions = true;
                 opt.AssumeDefaultVersionWhenUnspecified = true; //Varsayılan olarak dönecek
                 opt.DefaultApiVersion = new ApiVersion(1, 0);
+                opt.ApiVersionReader = new HeaderApiVersionReader("api-version");
             });
         }
     }
