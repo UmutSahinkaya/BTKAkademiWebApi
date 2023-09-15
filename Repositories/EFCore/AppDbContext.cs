@@ -1,10 +1,11 @@
 ﻿using Entities.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Repositories.EFCore.Config;
 
 namespace Repositories.EFCore
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<User>
     {
         public AppDbContext(DbContextOptions opt) : base(opt)
         {
