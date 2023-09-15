@@ -22,7 +22,7 @@ namespace Presentation.Controllers
         }
 
         [HttpHead]
-        [HttpGet]
+        [HttpGet(Name = "GetAllBooksAsync")]
         [ServiceFilter(typeof(ValidateMediaTypeAttribute))]
         public async Task<IActionResult> GetAllBooksAsync([FromQuery] BookParameters bookParameters)
         {

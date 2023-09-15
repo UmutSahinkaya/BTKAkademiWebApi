@@ -45,8 +45,9 @@ namespace Presentation.Controllers
                         Method="POST"
                     },
                 };
+                return Ok(list); //204
             }
-            return Ok(list); //204
+            return NoContent();
         }
     }
 }
