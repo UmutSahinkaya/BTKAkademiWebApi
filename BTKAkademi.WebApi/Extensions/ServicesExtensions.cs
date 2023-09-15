@@ -10,6 +10,7 @@ using Repositories.EFCore;
 using Services;
 using Services.Contracts;
 using Microsoft.AspNetCore.Mvc.Versioning;
+using Presentation.Controllers;
 
 namespace BTKAkademi.WebApi.Extensions
 {
@@ -91,6 +92,10 @@ namespace BTKAkademi.WebApi.Extensions
                 opt.AssumeDefaultVersionWhenUnspecified = true; //Varsayılan olarak dönecek
                 opt.DefaultApiVersion = new ApiVersion(1, 0);
                 opt.ApiVersionReader = new HeaderApiVersionReader("api-version");
+                opt.Conventions.Controller<BooksController>()
+                    .HasApiVersion(new ApiVersion(1, 0));
+                opt.Conventions.Controller<BooksV2Controller>()
+                    .HasApiVersion(new ApiVersion(2, 0));
             });
         }
     }

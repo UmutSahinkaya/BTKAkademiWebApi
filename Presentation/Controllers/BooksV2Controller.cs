@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Presentation.Controllers
 {
-    [ApiVersion("2.0",Deprecated =true)]//Deprecate etmek =  yayından kaldırmak
+    //[ApiVersion("2.0",Deprecated =true)]//Deprecate etmek =  yayından kaldırmak
     [ApiController]
     //[Route("api/{v:apiversion}/books")]
     [Route("api/books")]
