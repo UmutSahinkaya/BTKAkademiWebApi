@@ -1,5 +1,5 @@
 
-﻿using Entities.DataTransferObjects;
+using Entities.DataTransferObjects;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,6 +12,7 @@ using Services.Contracts;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Presentation.Controllers;
 using Marvin.Cache.Headers;
+using AspNetCoreRateLimit;
 
 namespace BTKAkademi.WebApi.Extensions
 {
@@ -111,7 +112,29 @@ namespace BTKAkademi.WebApi.Extensions
             {
                 validationOpt.MustRevalidate = false;
             });
-        
-            
+
+        public static void ConfigureRateLimitingOptions(this IServiceCollection services)
+        {
+            var rateLimitRules = new List<RateLimitRule>()
+            {
+               new RateLimitRule()
+               {
+                   Endpoint="*",
+                   Limit=3,
+                   Period="1m"
+               } //1 dk içinde max 3 istek alabilecek
+            };
+
+            services.Configure<IpRateLimitOptions>(opt =>
+            {
+                opt.GeneralRules = rateLimitRules;
+            });
+            services.AddSingleton<IRateLimitCounterStore, MemoryCacheRateLimitCounterStore>();
+            services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>();
+            services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
+            services.AddSingleton<IProcessingStrategy,AsyncKeyLockProcessingStrategy>();
+        }
+
+
     }
 }
