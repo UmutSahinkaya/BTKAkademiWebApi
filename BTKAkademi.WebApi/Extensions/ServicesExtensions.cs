@@ -20,13 +20,12 @@ namespace BTKAkademi.WebApi.Extensions
 {
     public static class ServicesExtensions
     {
-        public static void ConfigureSqlContext(this IServiceCollection services,
-            IConfiguration configuration) => services.AddDbContext<AppDbContext>(options =>
-                    options.UseSqlServer(configuration["ConnectionString:sqlConnection"]));
-
         public static void ConfigureRepositoryManager(this IServiceCollection services) =>
             services.AddScoped<IRepositoryManager, RepositoryManager>();
 
+        public static void ConfigureSqlContext(this IServiceCollection services,
+            IConfiguration configuration) => services.AddDbContext<AppDbContext>(options =>
+                    options.UseSqlServer(configuration["ConnectionString:sqlConnection"]));
         public static void ConfigureServiceManager(this IServiceCollection services) =>
             services.AddScoped<IServiceManager, ServiceManager>();
 
@@ -139,7 +138,7 @@ namespace BTKAkademi.WebApi.Extensions
 
         public static void ConfigureIdentity(this IServiceCollection services)
         {
-            services.AddIdentity<User, IdentityRole>(opts =>
+            var builder = services.AddIdentity<User, IdentityRole>(opts =>
             {
                 opts.Password.RequireDigit = true;
                 opts.Password.RequireLowercase = false;

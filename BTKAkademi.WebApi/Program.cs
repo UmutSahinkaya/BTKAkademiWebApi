@@ -1,15 +1,12 @@
 using AspNetCoreRateLimit;
 using BTKAkademi.WebApi.Extensions;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using NLog;
-using Presentation.ActionFilters;
-using Repositories.EFCore;
 using Services;
 using Services.Contracts;
 
 var builder = WebApplication.CreateBuilder(args);
-
+var configuration = builder.Configuration;
 LogManager.LoadConfiguration(String.Concat(Directory.GetCurrentDirectory(), "/nlog.config"));
 
 builder.Services.AddControllers(config =>
@@ -33,7 +30,7 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.ConfigureSqlContext(builder.Configuration);
+builder.Services.ConfigureSqlContext(configuration);
 builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureServiceManager();
 builder.Services.ConfigureLoggerService();
