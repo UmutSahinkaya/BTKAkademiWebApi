@@ -82,5 +82,14 @@ namespace BTKAkademi.WebApi.Extensions
             });
         }
 
+        public static void ConfigureVersioning(this IServiceCollection services)
+        {
+            services.AddApiVersioning(opt =>
+            {
+                opt.ReportApiVersions = true;
+                opt.AssumeDefaultVersionWhenUnspecified = true; //Varsayılan olarak dönecek
+                opt.DefaultApiVersion = new ApiVersion(1, 0);
+            });
+        }
     }
 }
