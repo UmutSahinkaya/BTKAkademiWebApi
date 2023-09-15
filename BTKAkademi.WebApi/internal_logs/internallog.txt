@@ -780,3 +780,21 @@
 2023-09-15 16:53:14.6691 Info Configuration initialized.
 2023-09-15 16:53:15.1876 Info AppDomain Shutting down. LogFactory closing...
 2023-09-15 16:53:15.1876 Info LogFactory has been closed.
+2023-09-15 17:00:56.5519 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-09-15 17:00:56.5716 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.3.1999. Product version: 5.2.3+a5ddef92a8afb22508450803e37c001f4a3ba52a. GlobalAssemblyCache: False
+2023-09-15 17:00:56.5716 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\Umut.Sahinkaya\Desktop\Test\BTKAkademi\BTKAkademi.WebApi\nlog.config
+2023-09-15 17:00:56.5716 Info Configuration initialized.
+2023-09-15 17:00:56.9590 Info AppDomain Shutting down. LogFactory closing...
+2023-09-15 17:00:56.9590 Info LogFactory has been closed.
+2023-09-15 17:02:40.6668 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-09-15 17:02:40.6726 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.3.1999. Product version: 5.2.3+a5ddef92a8afb22508450803e37c001f4a3ba52a. GlobalAssemblyCache: False
+2023-09-15 17:02:40.6726 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\Umut.Sahinkaya\Desktop\Test\BTKAkademi\BTKAkademi.WebApi\nlog.config
+2023-09-15 17:02:40.6726 Info Configuration initialized.
+2023-09-15 17:02:41.1279 Info AppDomain Shutting down. LogFactory closing...
+2023-09-15 17:02:41.1279 Info LogFactory has been closed.
+2023-09-15 17:02:49.1177 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-09-15 17:02:49.1177 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.3.1999. Product version: 5.2.3+a5ddef92a8afb22508450803e37c001f4a3ba52a. GlobalAssemblyCache: False
+2023-09-15 17:02:49.1283 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\Umut.Sahinkaya\Desktop\Test\BTKAkademi\BTKAkademi.WebApi\nlog.config
+2023-09-15 17:02:49.1283 Info Configuration initialized.
+2023-09-15 17:02:53.3539 Info AppDomain Shutting down. LogFactory closing...
+2023-09-15 17:02:53.3539 Info LogFactory has been closed.

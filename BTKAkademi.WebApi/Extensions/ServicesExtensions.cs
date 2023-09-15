@@ -25,7 +25,7 @@ namespace BTKAkademi.WebApi.Extensions
 
         public static void ConfigureSqlContext(this IServiceCollection services,
             IConfiguration configuration) => services.AddDbContext<AppDbContext>(options =>
-                    options.UseSqlServer(configuration["ConnectionString:sqlConnection"]));
+                    options.UseSqlServer(configuration["ConnectionString:sqlConnection"], b => b.MigrationsAssembly("BTKAkademi.WebApi")));
         public static void ConfigureServiceManager(this IServiceCollection services) =>
             services.AddScoped<IServiceManager, ServiceManager>();
 
