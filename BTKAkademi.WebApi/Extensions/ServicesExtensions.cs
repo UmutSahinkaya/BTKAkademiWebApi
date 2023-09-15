@@ -13,6 +13,8 @@ using Microsoft.AspNetCore.Mvc.Versioning;
 using Presentation.Controllers;
 using Marvin.Cache.Headers;
 using AspNetCoreRateLimit;
+using Microsoft.AspNetCore.Identity;
+using Entities.Models;
 
 namespace BTKAkademi.WebApi.Extensions
 {
@@ -135,6 +137,21 @@ namespace BTKAkademi.WebApi.Extensions
             services.AddSingleton<IProcessingStrategy,AsyncKeyLockProcessingStrategy>();
         }
 
+        public static void ConfigureIdentity(this IServiceCollection services)
+        {
+            services.AddIdentity<User, IdentityRole>(opts =>
+            {
+                opts.Password.RequireDigit = true;
+                opts.Password.RequireLowercase = false;
+                opts.Password.RequireUppercase = false;
+                opts.Password.RequireNonAlphanumeric = false;
+                opts.Password.RequiredLength = 6;
+
+                opts.User.RequireUniqueEmail = true;
+            })
+                .AddEntityFrameworkStores<AppDbContext>()
+                .AddDefaultTokenProviders();
+        }
 
     }
 }
