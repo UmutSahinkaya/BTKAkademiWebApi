@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Services.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,18 @@ namespace Presentation.Controllers
     [Route("api/books")]
     public class BooksV2Controller:ControllerBase
     {
+        private readonly IServiceManager _manager;
 
+        public BooksV2Controller(IServiceManager manager)
+        {
+            _manager = manager;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllBooksAsync()
+        {
+            var books=await _manager.BookService.GetAllBooksAsync(false); 
+            return Ok(books);
+        }
     }
 }
