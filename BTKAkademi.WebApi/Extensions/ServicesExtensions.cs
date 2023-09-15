@@ -11,6 +11,7 @@ using Services;
 using Services.Contracts;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Presentation.Controllers;
+using Marvin.Cache.Headers;
 
 namespace BTKAkademi.WebApi.Extensions
 {
@@ -100,5 +101,17 @@ namespace BTKAkademi.WebApi.Extensions
         }
 
         public static void ConfigureResponseCaching(this IServiceCollection services) => services.AddResponseCaching();
+
+        public static void ConfigureHttpCacheHeaders(this IServiceCollection services) =>
+            services.AddHttpCacheHeaders(expirationOpt =>
+            {
+                expirationOpt.MaxAge = 90;
+                expirationOpt.CacheLocation = CacheLocation.Private;
+            }, validationOpt =>
+            {
+                validationOpt.MustRevalidate = false;
+            });
+        
+            
     }
 }
