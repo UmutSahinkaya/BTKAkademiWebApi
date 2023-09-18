@@ -87,13 +87,15 @@ namespace Services
         }
         private JwtSecurityToken GenerateTokenOptions(SigningCredentials signinCredentials, List<Claim> claims)
         {
-            var JwtSettings = _configuration.GetSection("JwtSettings");
+            var jwtSettings = _configuration.GetSection("JwtSettings");
+
             var tokenOptions = new JwtSecurityToken(
-                issuer: JwtSettings["validIssuer"],
-                audience: JwtSettings["validAudience"],
-                claims: claims,
-                expires: DateTime.Now.AddMinutes(Convert.ToDouble(JwtSettings["expires"])),
-                signingCredentials: signinCredentials);
+                    issuer: jwtSettings["validIssuer"],
+                    audience: jwtSettings["validAudience"],
+                    claims: claims,
+                    expires: DateTime.Now.AddMinutes(Convert.ToDouble(jwtSettings["expires"])),
+                    signingCredentials: signinCredentials);
+
             return tokenOptions;
         }
 
