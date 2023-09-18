@@ -112,7 +112,7 @@ namespace Presentation.Controllers
         }
 
         [Authorize]
-        [HttpOptions]
+        [HttpOptions] 
         public IActionResult GetBookOptions()
         {
             Response.Headers.Add("Allow", "GET,PUT,POST,PATCH,DELETE,HEAD,OPTIONS");
