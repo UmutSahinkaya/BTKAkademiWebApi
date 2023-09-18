@@ -2,7 +2,7 @@
 using Entities.DataTransferObjects;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Presentation.ActionFilters;
 using Repositories.Contracts;
@@ -18,6 +18,7 @@ using Entities.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 namespace BTKAkademi.WebApi.Extensions
 {
@@ -136,7 +137,7 @@ namespace BTKAkademi.WebApi.Extensions
             services.AddSingleton<IRateLimitCounterStore, MemoryCacheRateLimitCounterStore>();
             services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>();
             services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
-            services.AddSingleton<IProcessingStrategy,AsyncKeyLockProcessingStrategy>();
+            services.AddSingleton<IProcessingStrategy, AsyncKeyLockProcessingStrategy>();
         }
 
         public static void ConfigureIdentity(this IServiceCollection services)
@@ -155,15 +156,15 @@ namespace BTKAkademi.WebApi.Extensions
                 .AddDefaultTokenProviders();
         }
 
-        public static void ConfigureJWT(this IServiceCollection services,IConfiguration configuration)
+        public static void ConfigureJWT(this IServiceCollection services, IConfiguration configuration)
         {
             var jwtSettings = configuration.GetSection("JwtSettings");
             var secretKey = jwtSettings["secretKey"];
 
             services.AddAuthentication(opt =>
             {
-                opt.DefaultAuthenticateScheme=JwtBearerDefaults.AuthenticationScheme;
-                opt.DefaultChallengeScheme=JwtBearerDefaults.AuthenticationScheme;
+                opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(opt =>
             {
                 opt.TokenValidationParameters = new TokenValidationParameters()
@@ -178,5 +179,56 @@ namespace BTKAkademi.WebApi.Extensions
                 };
             });
         }
+        public static void ConfigureSwagger(this IServiceCollection services)
+        {
+            services.AddSwaggerGen(s =>
+            {
+                s.SwaggerDoc("v1",
+                    new OpenApiInfo
+                    {
+                        Title = "Btk Akademi",
+                        Version = "v1",
+                        Description="Btk Akademi ASP.NET Core Web API",
+                        TermsOfService= new Uri("https://btkakademi.gov.tr"),
+                        Contact=new OpenApiContact
+                        {
+                            Name="Umut Şahinkaya",
+                            Email="umut.sahinkaya@makel.com.tr",
+                            Url= new Uri("https://github.com/UmutSahinkaya")
+                        }
+                    });
+                s.SwaggerDoc("v2",
+                    new OpenApiInfo
+                    {
+                        Title = "Btk Akademi",
+                        Version = "v2"
+                    });
+
+                s.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+                {
+                    In = ParameterLocation.Header,
+                    Description = "Place to add JWT with Bearer",
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer"
+                });
+                s.AddSecurityRequirement(new OpenApiSecurityRequirement()
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference=new OpenApiReference
+                            {
+                                Type=ReferenceType.SecurityScheme,
+                                Id="Bearer"
+                            },
+                            Name = "Bearer"
+                        },
+                        new List<string>()
+                    }
+                });
+            });
+        }
+
     }
 }
