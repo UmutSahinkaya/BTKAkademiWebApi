@@ -2,7 +2,7 @@
 using Entities.DataTransferObjects;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Presentation.ActionFilters;
 using Repositories.Contracts;
@@ -18,6 +18,7 @@ using Entities.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 namespace BTKAkademi.WebApi.Extensions
 {
@@ -178,5 +179,23 @@ namespace BTKAkademi.WebApi.Extensions
                 };
             });
         }
+        public static void ConfigureSwagger(this IServiceCollection services)
+        {
+            services.AddSwaggerGen(s =>
+            {
+                s.SwaggerDoc("v1",new OpenApiInfo {Title="Btk Akademi",Version="v1" });
+                s.SwaggerDoc("v2",new OpenApiInfo {Title="Btk Akademi",Version="v2" });
+
+                s.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+                {
+                    In = ParameterLocation.Header,
+                    Description = "Place to add JWT with Bearer",
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer"
+                });
+            });
+        }
+
     }
 }
