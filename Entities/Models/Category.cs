@@ -12,6 +12,6 @@ namespace Entities.Models
         public string? CategoryName { get; set; }
 
         //Ref: Collection navigation property
-        public ICollection<Book> Books { get; set; }
+        //public ICollection<Book> Books { get; set; }
     }
 }

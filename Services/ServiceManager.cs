@@ -28,7 +28,7 @@ namespace Services
             )
         {
             _bookService = new Lazy<IBookService>(() =>
-            new BookManager(repositoryManager, logger, mapper, bookLinks));
+            new BookManager(repositoryManager, logger, mapper, bookLinks,_categoryService.Value));
 
             _categoryService = new Lazy<ICategoryService>(() =>
             new CategoryManager(repositoryManager));
