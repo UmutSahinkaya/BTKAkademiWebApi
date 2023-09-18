@@ -826,3 +826,19 @@
 2023-09-18 09:50:04.4538 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.3.1999. Product version: 5.2.3+a5ddef92a8afb22508450803e37c001f4a3ba52a. GlobalAssemblyCache: False
 2023-09-18 09:50:04.4538 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\Umut.Sahinkaya\Desktop\Test\BTKAkademi\BTKAkademi.WebApi\nlog.config
 2023-09-18 09:50:04.4680 Info Configuration initialized.
+2023-09-18 10:31:21.8732 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-09-18 10:31:21.8861 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.3.1999. Product version: 5.2.3+a5ddef92a8afb22508450803e37c001f4a3ba52a. GlobalAssemblyCache: False
+2023-09-18 10:31:21.8921 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\Umut.Sahinkaya\Desktop\Test\BTKAkademi\BTKAkademi.WebApi\nlog.config
+2023-09-18 10:31:21.8921 Info Configuration initialized.
+2023-09-18 10:50:56.5285 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-09-18 10:50:56.5340 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.3.1999. Product version: 5.2.3+a5ddef92a8afb22508450803e37c001f4a3ba52a. GlobalAssemblyCache: False
+2023-09-18 10:50:56.5340 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\Umut.Sahinkaya\Desktop\Test\BTKAkademi\BTKAkademi.WebApi\nlog.config
+2023-09-18 10:50:56.5340 Info Configuration initialized.
+2023-09-18 10:50:57.0236 Info AppDomain Shutting down. LogFactory closing...
+2023-09-18 10:50:57.0236 Info LogFactory has been closed.
+2023-09-18 10:51:21.6801 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2023-09-18 10:51:21.6856 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.2.3.1999. Product version: 5.2.3+a5ddef92a8afb22508450803e37c001f4a3ba52a. GlobalAssemblyCache: False
+2023-09-18 10:51:21.6856 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\Umut.Sahinkaya\Desktop\Test\BTKAkademi\BTKAkademi.WebApi\nlog.config
+2023-09-18 10:51:21.6856 Info Configuration initialized.
+2023-09-18 10:51:22.2840 Info AppDomain Shutting down. LogFactory closing...
+2023-09-18 10:51:22.2840 Info LogFactory has been closed.
