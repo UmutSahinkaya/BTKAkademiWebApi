@@ -13,18 +13,22 @@ using Microsoft.AspNetCore.Mvc.Versioning;
 using Presentation.Controllers;
 using Marvin.Cache.Headers;
 using AspNetCoreRateLimit;
+using Microsoft.AspNetCore.Identity;
+using Entities.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace BTKAkademi.WebApi.Extensions
 {
     public static class ServicesExtensions
     {
-        public static void ConfigureSqlContext(this IServiceCollection services,
-            IConfiguration configuration) => services.AddDbContext<AppDbContext>(options =>
-                    options.UseSqlServer(configuration["ConnectionString:sqlConnection"]));
-
         public static void ConfigureRepositoryManager(this IServiceCollection services) =>
             services.AddScoped<IRepositoryManager, RepositoryManager>();
 
+        public static void ConfigureSqlContext(this IServiceCollection services,
+            IConfiguration configuration) => services.AddDbContext<AppDbContext>(options =>
+                    options.UseSqlServer(configuration["ConnectionString:sqlConnection"], b => b.MigrationsAssembly("BTKAkademi.WebApi")));
         public static void ConfigureServiceManager(this IServiceCollection services) =>
             services.AddScoped<IServiceManager, ServiceManager>();
 
@@ -120,7 +124,7 @@ namespace BTKAkademi.WebApi.Extensions
                new RateLimitRule()
                {
                    Endpoint="*",
-                   Limit=3,
+                   Limit=100,
                    Period="1m"
                } //1 dk içinde max 3 istek alabilecek
             };
@@ -135,6 +139,44 @@ namespace BTKAkademi.WebApi.Extensions
             services.AddSingleton<IProcessingStrategy,AsyncKeyLockProcessingStrategy>();
         }
 
+        public static void ConfigureIdentity(this IServiceCollection services)
+        {
+            var builder = services.AddIdentity<User, IdentityRole>(opts =>
+            {
+                opts.Password.RequireDigit = true;
+                opts.Password.RequireLowercase = false;
+                opts.Password.RequireUppercase = false;
+                opts.Password.RequireNonAlphanumeric = false;
+                opts.Password.RequiredLength = 6;
 
+                opts.User.RequireUniqueEmail = true;
+            })
+                .AddEntityFrameworkStores<AppDbContext>()
+                .AddDefaultTokenProviders();
+        }
+
+        public static void ConfigureJWT(this IServiceCollection services,IConfiguration configuration)
+        {
+            var jwtSettings = configuration.GetSection("JwtSettings");
+            var secretKey = jwtSettings["secretKey"];
+
+            services.AddAuthentication(opt =>
+            {
+                opt.DefaultAuthenticateScheme=JwtBearerDefaults.AuthenticationScheme;
+                opt.DefaultChallengeScheme=JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(opt =>
+            {
+                opt.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = jwtSettings["validIssuer"],
+                    ValidAudience = jwtSettings["validAudience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
+                };
+            });
+        }
     }
 }
