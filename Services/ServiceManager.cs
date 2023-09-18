@@ -24,8 +24,8 @@ namespace Services
             IMapper mapper,
             IConfiguration configuration,
             UserManager<User> userManager,
-            IBookLinks bookLinks,
-            Lazy<ICategoryService> categoryService)
+            IBookLinks bookLinks
+            )
         {
             _bookService = new Lazy<IBookService>(() =>
             new BookManager(repositoryManager, logger, mapper, bookLinks));
@@ -35,7 +35,7 @@ namespace Services
 
             _authencationService = new Lazy<IAuthenticationService>(() =>
             new AuthenticationManager(logger, mapper, userManager, configuration));
-            _categoryService = categoryService;
+            
         }
         public IBookService BookService => _bookService.Value;
 
