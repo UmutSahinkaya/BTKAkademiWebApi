@@ -124,7 +124,7 @@ namespace BTKAkademi.WebApi.Extensions
                new RateLimitRule()
                {
                    Endpoint="*",
-                   Limit=3,
+                   Limit=100,
                    Period="1m"
                } //1 dk içinde max 3 istek alabilecek
             };
