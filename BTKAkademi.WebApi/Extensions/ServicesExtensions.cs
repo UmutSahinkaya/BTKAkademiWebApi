@@ -137,7 +137,7 @@ namespace BTKAkademi.WebApi.Extensions
             services.AddSingleton<IRateLimitCounterStore, MemoryCacheRateLimitCounterStore>();
             services.AddSingleton<IIpPolicyStore, MemoryCacheIpPolicyStore>();
             services.AddSingleton<IRateLimitConfiguration, RateLimitConfiguration>();
-            services.AddSingleton<IProcessingStrategy,AsyncKeyLockProcessingStrategy>();
+            services.AddSingleton<IProcessingStrategy, AsyncKeyLockProcessingStrategy>();
         }
 
         public static void ConfigureIdentity(this IServiceCollection services)
@@ -156,15 +156,15 @@ namespace BTKAkademi.WebApi.Extensions
                 .AddDefaultTokenProviders();
         }
 
-        public static void ConfigureJWT(this IServiceCollection services,IConfiguration configuration)
+        public static void ConfigureJWT(this IServiceCollection services, IConfiguration configuration)
         {
             var jwtSettings = configuration.GetSection("JwtSettings");
             var secretKey = jwtSettings["secretKey"];
 
             services.AddAuthentication(opt =>
             {
-                opt.DefaultAuthenticateScheme=JwtBearerDefaults.AuthenticationScheme;
-                opt.DefaultChallengeScheme=JwtBearerDefaults.AuthenticationScheme;
+                opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(opt =>
             {
                 opt.TokenValidationParameters = new TokenValidationParameters()
@@ -183,8 +183,26 @@ namespace BTKAkademi.WebApi.Extensions
         {
             services.AddSwaggerGen(s =>
             {
-                s.SwaggerDoc("v1",new OpenApiInfo {Title="Btk Akademi",Version="v1" });
-                s.SwaggerDoc("v2",new OpenApiInfo {Title="Btk Akademi",Version="v2" });
+                s.SwaggerDoc("v1",
+                    new OpenApiInfo
+                    {
+                        Title = "Btk Akademi",
+                        Version = "v1",
+                        Description="Btk Akademi ASP.NET Core Web API",
+                        TermsOfService= new Uri("https://btkakademi.gov.tr"),
+                        Contact=new OpenApiContact
+                        {
+                            Name="Umut Şahinkaya",
+                            Email="umut.sahinkaya@makel.com.tr",
+                            Url= new Uri("https://github.com/UmutSahinkaya")
+                        }
+                    });
+                s.SwaggerDoc("v2",
+                    new OpenApiInfo
+                    {
+                        Title = "Btk Akademi",
+                        Version = "v2"
+                    });
 
                 s.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
                 {
