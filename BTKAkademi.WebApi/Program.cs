@@ -49,7 +49,8 @@ builder.Services.ConfigureRateLimitingOptions();
 builder.Services.AddHttpContextAccessor();
 builder.Services.ConfigureIdentity();
 builder.Services.ConfigureJWT(configuration);
-
+builder.Services.RegisterRepositories();
+builder.Services.RegisterServices();
 
 var app = builder.Build();
 
