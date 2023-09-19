@@ -10,15 +10,18 @@ namespace Repositories.EFCore
     public class RepositoryManager : IRepositoryManager
     {
         private readonly AppDbContext _context;
-        private readonly Lazy<IBookRepository> _bookRepository;
+        private readonly IBookRepository _bookRepository;
+        private readonly ICategoryRepository _categoryRepository;
 
-        public RepositoryManager(AppDbContext context)
+        public RepositoryManager(ICategoryRepository categoryRepository, IBookRepository bookRepository, AppDbContext context)
         {
+            _categoryRepository = categoryRepository;
+            _bookRepository = bookRepository;
             _context = context;
-            _bookRepository = new Lazy<IBookRepository>(() => new BookRepository(_context));
         }
 
-        public IBookRepository Book => _bookRepository.Value;//nesne kullanıldığı anda new lenecek!! 
+        public IBookRepository Book => _bookRepository;//nesne kullanıldığı anda new lenecek!! 
+        public ICategoryRepository Category => _categoryRepository;
 
         public async Task SaveAsync()
         {
